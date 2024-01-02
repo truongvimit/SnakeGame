@@ -28,8 +28,8 @@ class MainActivity : BaseActivity() {
         val mainViewModel: MainViewModel = koinViewModel()
         val uiState by mainViewModel.uiState.collectAsState()
         navController = rememberNavController()
-        val telephonyManager = getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-        val countryCode = telephonyManager.networkCountryIso
+
+        val countryCode = uiState.countryCode
 
         val isVietnam = countryCode == "VN"
 

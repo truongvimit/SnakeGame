@@ -8,6 +8,8 @@ import com.truongvim.snakegame.BuildConfig
 import com.truongvim.snakegame.data.model.RemoteConfigs
 import com.truongvim.snakegame.utils.DefaultConfigs
 import com.truongvim.snakegame.utils.TAG
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
 /**
  * @Author Mbuodile Obiosio
@@ -68,9 +70,7 @@ class RemoteConfigRepoImpl : RemoteConfigRepo {
     /**
      * @return [RemoteConfigs] remote values
      * */
-    override fun getConfigs(): RemoteConfigs {
-        return RemoteConfigs(
-            urlPoint = remoteConfig.getString("url_point")
-        )
-    }
+    override fun getConfigs(): RemoteConfigs = RemoteConfigs(
+        urlPoint = remoteConfig.getString("url_point")
+    )
 }

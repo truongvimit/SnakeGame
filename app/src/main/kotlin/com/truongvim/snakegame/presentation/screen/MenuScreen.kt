@@ -8,6 +8,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavHostController
 import com.truongvim.snakegame.R
 import com.truongvim.snakegame.domain.extension.launchActivity
@@ -31,7 +32,7 @@ fun MenuScreen(navController: NavHostController) {
         verticalArrangement = Arrangement.Center
     ) {
         val context = LocalContext.current
-        DisplayLarge(text = stringResource(id = R.string.app_name))
+        DisplayLarge(text = stringResource(id = R.string.app_name), textAlign = TextAlign.Center)
         AppButton(
             modifier = Modifier
                 .width(width248dp)
