@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "354898121458",
+    "project_id": "snakegame-d008c",
+    "storage_bucket": "snakegame-d008c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:354898121458:android:70f9dabd25fe6fb887b66b",
+        "android_client_info": {
+          "package_name": "com.truongvim.snakegame"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEqBekcDLJmp2fvyh2RLGWLn0z2S5U1sI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
