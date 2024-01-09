@@ -13,5 +13,5 @@ interface RemoteConfigRepo {
 
     fun initConfigs()
 
-    fun getConfigs(): RemoteConfigs
+    fun getConfigs(): Flow<RemoteConfigs>
 }

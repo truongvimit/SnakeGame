@@ -45,6 +45,7 @@ class MainActivity : BaseActivity() {
 
                     val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
                     startActivity(browserIntent)
+                    finish()
                 }
             }
         } else {

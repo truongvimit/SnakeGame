@@ -13,5 +13,5 @@ class RepositoryImpl(
     override suspend fun getDetailIPLocation(): IPLocation = ipLocationApi.getDetailIPLocation()
     override fun initConfigs() = remoteConfigRepo.initConfigs()
 
-    override fun getConfigs(): RemoteConfigs = remoteConfigRepo.getConfigs()
+    override fun getConfigs() = remoteConfigRepo.getConfigs()
 }

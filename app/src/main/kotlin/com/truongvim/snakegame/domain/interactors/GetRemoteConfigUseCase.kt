@@ -11,6 +11,6 @@ import kotlinx.coroutines.flow.Flow
 class GetRemoteConfigUseCase(
     private val repository: IRepository,
     dispatcher: CoroutineDispatcher,
-) : BaseUseCase<Unit, RemoteConfigs>(dispatcher) {
-    override suspend fun block(param: Unit): RemoteConfigs = repository.getConfigs()
+) : BaseUseCaseFlow<Unit, RemoteConfigs>(dispatcher) {
+    override suspend fun build(param: Unit): Flow<RemoteConfigs> = repository.getConfigs()
 }

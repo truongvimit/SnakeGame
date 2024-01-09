@@ -9,7 +9,11 @@ import com.truongvim.snakegame.data.model.RemoteConfigs
 import com.truongvim.snakegame.utils.DefaultConfigs
 import com.truongvim.snakegame.utils.TAG
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.update
 
 /**
  * @Author Mbuodile Obiosio
@@ -19,6 +23,9 @@ class RemoteConfigRepoImpl : RemoteConfigRepo {
 
     // Get remote config instance
     private val remoteConfig = Firebase.remoteConfig
+
+    private val _configs = MutableStateFlow(RemoteConfigs())
+    private val configs = _configs.asStateFlow()
 
     init {
         initConfigs()
@@ -55,11 +62,16 @@ class RemoteConfigRepoImpl : RemoteConfigRepo {
          * Fetch updates from Firebase console
          * */
         remoteConfig.fetchAndActivate()
-            .addOnCompleteListener {
-                if (it.isSuccessful) {
-                    Log.d(TAG, "Successful ${it.result}")
+            .addOnCompleteListener { taskResult ->
+                if (taskResult.isSuccessful) {
+                    Log.d(TAG, "Successful ${taskResult.result}")
+                    _configs.update {
+                        it.copy(
+                            urlPoint = remoteConfig.getString("url_point")
+                        )
+                    }
                 } else {
-                    Log.d(TAG, "Failed ${it.result}")
+                    Log.d(TAG, "Failed ${taskResult.result}")
                 }
             }.addOnFailureListener {
                 Log.d(TAG, "Exception ${it.message}")
@@ -70,7 +82,9 @@ class RemoteConfigRepoImpl : RemoteConfigRepo {
     /**
      * @return [RemoteConfigs] remote values
      * */
-    override fun getConfigs(): RemoteConfigs = RemoteConfigs(
-        urlPoint = remoteConfig.getString("url_point")
-    )
+    override fun getConfigs() = flow {
+        configs.collect {
+            emit(it)
+        }
+    }
 }

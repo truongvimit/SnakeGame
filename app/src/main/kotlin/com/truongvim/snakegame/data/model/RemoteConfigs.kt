@@ -5,5 +5,5 @@ package com.truongvim.snakegame.data.model
  * Twitter: @cazewonder
  */
 data class RemoteConfigs(
-    val urlPoint: String,
+    val urlPoint: String? = null,
 )
