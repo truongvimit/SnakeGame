@@ -52,7 +52,10 @@ fun AboutScreen(navController: NavHostController) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            DisplayLarge(text = stringResource(id = R.string.app_name))
+            DisplayLarge(
+                text = stringResource(id = R.string.app_name),
+                textAlign = TextAlign.Center
+            )
             TitleLarge(
                 modifier = Modifier.padding(padding8dp),
                 text = BuildConfig.VERSION_NAME

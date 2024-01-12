@@ -9,13 +9,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.truongvim.snakegame.R
 import com.truongvim.snakegame.domain.extension.launchActivity
 import com.truongvim.snakegame.domain.navigation.Screen
 import com.truongvim.snakegame.presentation.activity.GameActivity
 import com.truongvim.snakegame.presentation.component.AppButton
 import com.truongvim.snakegame.presentation.component.DisplayLarge
+import com.truongvim.snakegame.presentation.theme.SnakeTheme
 import com.truongvim.snakegame.presentation.theme.border2dp
 import com.truongvim.snakegame.presentation.theme.padding16dp
 import com.truongvim.snakegame.presentation.theme.padding64dp
@@ -51,5 +54,13 @@ fun MenuScreen(navController: NavHostController) {
         AppButton(modifier = Modifier.width(width248dp), text = stringResource(R.string.about)) {
             navController.navigate(Screen.About.route)
         }
+    }
+}
+
+@Preview
+@Composable
+fun PreviewMenuScreen() {
+    SnakeTheme {
+        MenuScreen(navController = rememberNavController())
     }
 }
